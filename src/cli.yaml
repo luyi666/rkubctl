@@ -1,0 +1,61 @@
+name: rkubectl
+version: "0.1.0"
+author: luyi666 <ly921225@gmail.com>
+about: A command line application which provides ShotCuts to kubectl commands written in rust.
+
+
+args:
+  - middle:
+      short: m
+      about: Insert a middle name between component and version number (kg2 -> kg-sophon2, with middle name "-sophon")
+      takes_value: true
+  - completion:
+      short: c
+      value_name: SHELL
+      about: "Generate a SHELL completion script and print to stdout [possible values: bash, zsh, fish, power-shell, elvish]"
+      takes_value: true
+subcommands:
+  - describe:
+      short: des
+      about: Show description of a pod
+      args:
+        - POD:
+            about: pod name
+            required: true
+  - delete:
+      short: del
+      about: Delete a pod
+      args:
+        - POD:
+            about: pod name
+            required: true
+  - image:
+      short: im
+      about: Show image of a pod
+      args:
+        - POD:
+            about: the pod name to use
+            index: 1
+            required: true
+  - container:
+      short: con
+      about: Show docker container id within a pod
+      args:
+        - POD:
+            about: the pod name to use
+            index: 1
+            required: true
+  - logs:
+      about: Show logs of a pod
+      args:
+        - POD:
+            about: the pod name to use
+            index: 1
+            required: true
+  - exec:
+      about: Execute a command in a container
+      args:
+        - POD:
+            about: the pod name to use
+            index: 1
+            required: true
